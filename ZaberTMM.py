@@ -164,8 +164,8 @@ class ZaberTMM(Device, metaclass=DeviceMeta):
         # PROTECTED REGION END #    //  ZaberTMM.get_position
         
     def write_read(self, cmd_number, data = None):
-         # PROTECTED REGION ID(ZaberTMM.write_read) ENABLED START #
-         if (data is None):
+    # PROTECTED REGION ID(ZaberTMM.write_read) ENABLED START #
+        if (data is None):
             cmd = BinaryCommand(self.__dev_num, cmd_number)
         else:
             cmd = BinaryCommand(self.__dev_num, cmd_number, data)
