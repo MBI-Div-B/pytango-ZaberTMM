@@ -135,7 +135,7 @@ class ZaberTMM(Device, metaclass=DeviceMeta):
         
         self.__con = BinarySerial(self.__port, self.__baud)
         # set device mode
-        self.write_read(self.__dev_mode,self.__dev_cmd)
+        self.write_read(self.__dev_mode, self.__dev_cmd)
         
         if (self.read_controller_info() != ''):
             print('Zaber TMM self.controller Initialization ...')
@@ -168,7 +168,7 @@ class ZaberTMM(Device, metaclass=DeviceMeta):
         if (data is None):
             cmd = BinaryCommand(self.__dev_num, cmd_number)
         else:
-            cmd = BinaryCommand(self.__dev_num, cmd_number, data)
+            cmd = BinaryCommand(self.__dev_num, cmd_number, int(data))
         
         self.__con.write(cmd)
              
