@@ -29,10 +29,10 @@ from zaber.serial import BinarySerial, BinaryCommand, BinaryReply
 
 flagDebugIO = 1
 
-class ZaberTMM(Device):
+class ZaberTMM(Device, metaclass=DeviceMeta):
     """
     """
-    __metaclass__ = DeviceMeta
+    #__metaclass__ = DeviceMeta
     # PROTECTED REGION ID(ZaberTMM.class_variable) ENABLED START #
     # PROTECTED REGION END #    //  ZaberTMM.class_variable
     # ----------------
