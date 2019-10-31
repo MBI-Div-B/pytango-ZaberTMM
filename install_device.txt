@@ -1,0 +1,30 @@
+Installieren des Devices mittels "Jive"
+#######################################
+
+1. Installieren
+---------------
+
+Anlegen eines neuen Devices:
+
+Server (Servername/Instance) : Zaber/hhg
+Class: Zaber
+Device: hhg/Zaber/1
+
+"Register Server"
+
+1: Zaber 1
+2: Zaber 2 usw. 
+
+
+1.2. Konfiguration
+-------------------
+
+Die Properties:
+Name: Port		Value: com2		# serieller Port (com1, com2 .., /dev/tty, /dev/ttyUSB0 ..  )
+	
+1.3. Starten
+---------------
+
+# python Zaber.py hhg
+
+
