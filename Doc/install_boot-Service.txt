@@ -17,7 +17,7 @@ $ chmod 777 device-wrapper.sh
 
 - Erstellen einer "systemd"-Datei unter "/etc/systemd/system"
 
-Wir nennen sie "tango_agap.service" und sie hat diesen Inhalt:
+Wir nennen sie "tango_zaber.service" und sie hat diesen Inhalt:
 
 ****
 [Unit]
@@ -28,8 +28,8 @@ After=network-online.target
 [Service]
 Type=forking
 GuessMainPID=no
-ExecStart=/home/pi/Tango_Devices/AgilisAGAP/device_wrapper.sh
-WorkingDirectory=/home/pi/Tango_Devices/AgilisAGAP
+ExecStart=/home/pi/Tango_Devices/Zaber/device_wrapper.sh
+WorkingDirectory=/home/pi/Tango_Devices/Zaber
 User=pi
 Restart=on-abort
 StandardOutput=journal
@@ -39,22 +39,22 @@ StandardError=journal
 WantedBy=multi-user.target
 ****
 
-$ sudo chmod +x  tango_agap.service
+$ sudo chmod +x  tango_zaber.service
 
 Immer nach dem Aendern eines systemd-Files ausfuehren:
  
 $ sudo systemctl daemon-reload 
-$ sudo systemctl start tango_agap.service
+$ sudo systemctl start tango_zaber.service
 
 Und stoppen:
 
-$ sudo systemctl stop tango_agap.service
+$ sudo systemctl stop tango_zaber.service
 
 
 Jetzt bootfest machen:
 
-$ sudo systemctl enable tango_agap.service
-Created symlink /etc/systemd/system/multi-user.target.wants/tango_agap.service → /etc/systemd/system/tango_agap.service.
+$ sudo systemctl enable tango_zaber.service
+Created symlink /etc/systemd/system/multi-user.target.wants/tango_zaber.service → /etc/systemd/system/tango_zaber.service.
 
 
 
