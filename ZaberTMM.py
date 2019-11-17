@@ -206,6 +206,7 @@ class ZaberTMM(Device, metaclass=DeviceMeta):
     def write_position(self, value):
         # PROTECTED REGION ID(ZaberTMM.position_write) ENABLED START #
         self.write_read(self.__dev_mov_abs, value)
+        self.__Motor_Run = True
         # PROTECTED REGION END #    //  ZaberTMM.position_write
 
     # --------
