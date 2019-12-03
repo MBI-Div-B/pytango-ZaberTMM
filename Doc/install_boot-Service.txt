@@ -1,6 +1,6 @@
 1. Erstellen eines Shell-Scriptes zum Starten der Python-Devices
 
-Wir nenen es "device-wrapper.sh".
+Wir nenen es "device_wrapper.sh".
 
 Funktion:
 --------
@@ -55,6 +55,3 @@ Jetzt bootfest machen:
 
 $ sudo systemctl enable tango_zaber.service
 Created symlink /etc/systemd/system/multi-user.target.wants/tango_zaber.service → /etc/systemd/system/tango_zaber.service.
-
-
-
