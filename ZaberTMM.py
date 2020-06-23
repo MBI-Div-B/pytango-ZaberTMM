@@ -1,36 +1,35 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-#
+
 # This file is part of the ZaberTMM project
-#
-#
-#
-# Distributed under the terms of the GPL license.
-# See LICENSE.txt for more info.
 
-""" ZaberTMMController
+# Copyright (C) DATE  MBI-Division-B
+# MIT License, refer to LICENSE file
+# Author: / Email: (please change DATE above to year)
 
-"""
+
 
 __all__ = ["ZaberTMM", "main"]
 
 # PyTango imports
 import PyTango
 from PyTango import DebugIt, DeviceProxy
-from PyTango.server import run
 from PyTango.server import Device, DeviceMeta
 from PyTango.server import attribute, command
-from PyTango.server import class_property, device_property
-from PyTango import AttrQuality, AttrWriteType, DispLevel, DevState
+from PyTango.server import device_property
+from PyTango import AttrWriteType
 # Additional import
 # PROTECTED REGION ID(Zaber.additionnal_import) ENABLED START #
 from time import sleep
-from zaber.serial import BinarySerial, BinaryCommand, BinaryReply
+from zaber.serial import BinarySerial, BinaryCommand
 # PROTECTED REGION END #    //  ZaberTMM.additionnal_import
 
 flagDebugIO = 1
 
 class ZaberTMM(Device, metaclass=DeviceMeta):
-    """
+    """ 
+    ZaberTMMController
+
     """
     #__metaclass__ = DeviceMeta
     # PROTECTED REGION ID(ZaberTMM.class_variable) ENABLED START #
