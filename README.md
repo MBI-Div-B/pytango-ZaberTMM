@@ -1,3 +1,13 @@
+# ZaberTMM pytango device server
+
+Manual at: https://www.zaber.com/manuals/T-MM
+
+pip install zaber.serial
+pip install zaber-motion-bindings-linux
+pip install zaber-motion
+
+
+
 www.zaber.com
 https://www.zaber.com/support/docs/api/core-python/0.9/
 
@@ -35,3 +45,4 @@ PACKAGE CONTENTS
     timeouterror
     unexpectedreplyerror
     utils
+
