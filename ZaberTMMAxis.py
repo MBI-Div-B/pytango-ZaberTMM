@@ -3,6 +3,7 @@
 #!/usr/bin/python3 -u
 from tango import AttrWriteType, DevState, DispLevel, DeviceProxy
 from tango.server import Device, attribute, command, device_property
+from zaber_motion.binary import CommandCode
 
 class ZaberTMMAxis(Device):
     """ZaberTMMAxis"""
@@ -36,10 +37,10 @@ class ZaberTMMAxis(Device):
 
         self.info_stream('Axis set to: {:d}'.format(self.Axis))
         self.info_stream('Mode set to: {:d}'.format(self.Mode))
-        self.query(40, self.Mode)
+        self.query(CommandCode.SET_DEVICE_MODE, self.Mode)
             
     def always_executed_hook(self):
-        res = self.query(54)
+        res = self.query(CommandCode.RETURN_STATUS)
         if res == 0:
             self.set_state(DevState.ON)
             self.set_status('Device is ON')
@@ -53,32 +54,32 @@ class ZaberTMMAxis(Device):
             self. PyTango.DevState.OFF
             self.set_status('Device is OFF') 
 
-    def query(self, cmd_num, data=0):
-        return self.ctrl.query([self.Axis, cmd_num, data])
+    def query(self, cmd_code, data=0):
+        return self.ctrl.query([self.Axis, cmd_code.value, data])
 
     def read_position(self):
-        return float(self.query(60))
+        return float(self.query(CommandCode.RETURN_CURRENT_POSITION))
     
     def write_position(self, value):
         self.set_state(DevState.MOVING)
         self.set_status('Device is MOVING')
-        self.query(20, int(value))
+        self.query(CommandCode.MOVE_ABSOLUTE, int(value))
 
     @command
     def Reset(self):
         self.set_state(DevState.OFF)
         self.set_status('Device is OFF')  
-        self.query(0)
+        self.query(CommandCode.RESET)
 
     @command
     def Homing(self):
         self.set_state(DevState.MOVING)
         self.set_status('Device is HOMING')  
-        self.query(1)
+        self.query(CommandCode.HOME)
     
     @command
     def Stop(self):    
-        self.query(23)
+        self.query(CommandCode.STOP)
 
 # start the server
 if __name__ == '__main__':
