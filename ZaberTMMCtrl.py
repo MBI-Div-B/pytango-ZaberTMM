@@ -46,15 +46,18 @@ class ZaberTMMCtrl(Device):
         data = int(binary_command[2])
 
         cmd = CommandCode(cmd_code)
-
-        if (cmd_code in self.__REPLAY_STATES):            
-            self.debug_stream('query: {:d} {:d} {:d}'.format(axis, cmd_code, data))
-            res = self.con.generic_command(axis, cmd, data)
-            return int(res.data)
-        else:
-            self.debug_stream('sendcmd: {:d} {:d} {:d}'.format(axis, cmd_code, data))
-            self.con.generic_command_no_response(axis, cmd, data)
-            return 0
+        try:
+            if (cmd_code in self.__REPLAY_STATES):            
+                self.debug_stream('query: {:d} {:d} {:d}'.format(axis, cmd_code, data))
+                res = self.con.generic_command(axis, cmd, data)
+                return int(res.data)
+            else:
+                self.debug_stream('sendcmd: {:d} {:d} {:d}'.format(axis, cmd_code, data))
+                self.con.generic_command_no_response(axis, cmd, data)
+                return 0
+        except:
+            self.error_stream('error in communication!')
+            return -1
 
 # start the server
 if __name__ == '__main__':
